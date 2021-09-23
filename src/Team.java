@@ -5,11 +5,11 @@ import java.util.Set;
 public class Team {
     private static final int MAX_POKEMON_QUANTITY = 10;
     private Set<Player> players;
-    private Set<Pokemon> earnedPokemon = new LinkedHashSet<>();
+    private Set<Pokemon> earnedPokemon;
 
     public Team() {
         this.players = new HashSet<>();
-        //this.earnedPokemon ;
+        this.earnedPokemon = new LinkedHashSet<>();
     }
 
     public void addPlayer(Player player) {
@@ -37,11 +37,11 @@ public class Team {
         for (Pokemon pokemon : earnedPokemon) {
             Player owner = pokemon.getOwner();
             if (counter < 3) {
-                owner.setPoints(owner.getPoints() + 10);
+                owner.addPoints(10);
             } else if (counter < 6) {
-                owner.setPoints(owner.getPoints() + 5);
+                owner.addPoints(5);
             } else {
-                owner.setPoints(owner.getPoints() + 1);
+                owner.addPoints(1);
             }
             counter++;
         }
